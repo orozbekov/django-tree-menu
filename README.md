@@ -23,6 +23,17 @@ Now you can run the project using the following command:
 docker-compose up -d
 ```
 
+Once the project is running, go to the following URL to visit the site:
+
+```
+http://localhost:8000
+```
+To log in to the administrative panel, use the following credentials:
+```
+username: admin
+password: qwertyuiop!123
+```
+
 <h3 align="center">Languages and Tools:</h3>
 <p align="center">
 <a href="https://www.djangoproject.com/" target="_blank" rel="noreferrer"> 
