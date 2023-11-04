@@ -1,0 +1,42 @@
+{% load menu_tags %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+</head>
+<body>
+    <div id="main-menu">
+        <h2>Admin panel ><a href="/admin/">Click</h2>
+        <ul class="tree">
+            {% draw_menu 'Main menu' %}
+            {% for item in menu_items %}
+            <li class="{% if request.path == item.url %}active{% endif %}">
+                <a href="{{ item.url }}">{{ item.title }}</a>
+                {% if item.children.all %}
+                <ul>
+                    {% for child in item.children.all %}
+                    <li class="{% if request.path == child.url %}active{% endif %}">
+                        <a href="{{ child.url }}">{{ child.title }}</a>
+                        {% if child.children.all %}
+                        <ul>
+                            {% for subchild in child.children.all %}
+                            <li class="{% if request.path == subchild.url %}active{% endif %}">
+                                <a href="{{ subchild.url }}">{{ subchild.title }}</a>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                        {% endif %}
+                    </li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+</html>
